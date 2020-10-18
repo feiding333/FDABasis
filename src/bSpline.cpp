@@ -62,7 +62,7 @@ arma::vec bSpline::evalSplineSingle(double t){
 // evaluate spline derivative value at t\in [t_min, t_max]
 arma::vec bSpline::evalSplineDerivSingle(double t, int derivN){
     RcppGSL::matrix<double> result_tmp(degreeOF, derivN + 1);
-    gsl_bspline_deriv_eval(t, derivN, result_tmp, bw);
+    gsl_bspline_deriv_eval(t, derivN, result_tmp, bw,bw);
     arma::vec result(degreeOF);
     for(int i = 0; i < degreeOF; i++){
         result(i) = result_tmp(i, derivN);//lastCol.vector.data[i];
